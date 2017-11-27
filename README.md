@@ -14,5 +14,5 @@ docker network create digituz
 docker build -t digituz-docker .
 
 # run an instance based on this image
-docker run --network digituz --name digituz-docker -d -p 8888:80 digituz-docker
+docker run --network digituz --name digituz-docker -d -p 80:80 digituz-docker
 ```
