@@ -1,47 +1,34 @@
-Preparing environment:
+# Deploying Digituz Gateway
+
+## Creating Digituz Network
+
+First, we need to create a Docker network for Digituz microservices:
 
 ```bash
-mkdir ~/git/
-cd ~/git/
+DIGITUZ_NETWORK=digituz
+
+docker network create $DIGITUZ_NETWORK
 ```
 
-Preparing Docker:
+## Bootstrapping Microservices
+
+Then we have to bootstrap all Digituz microservices. To do so, we can follow instructions on their own repositories:
+
+- [Deploying React Client on Digituz](https://github.com/brunokrebs/react-auth0/blob/master/docs/deploy-digituz.md)
+- [Deploying RestFlex on Digituz](https://github.com/auth0-blog/auth0-rest-server/blob/master/docs/deploy-digituz.md)
+
+## Bootstrapping Digituz Gateway
+
+We have to leave bootstrapping Digituz Gateway as the last thing because NGINX uses the other microservices as upstreams:
 
 ```bash
-# create a network
-docker network create digituz
-```
+# clone
+git clone https://github.com/Digituz/docker.git ~/git/digituz-gateway
+cd ~/git/digituz-gateway
 
-Cloning and starting Angular Auth0 Generic App:
-
-```bash
-git clone https://github.com/brunokrebs/angular-auth0-aside.git
-cd angular-auth0-aside
-docker build -t angular-auth0 .
-docker run --name angular-auth0 --network digituz -d angular-auth0
-```
-
-Cloning and starting React Auth0:
-
-```bash
-git clone https://github.com/brunokrebs/react-auth0.git
-cd react-auth0
-docker build -t react-auth0 .
-docker run --name react-auth0 --network digituz -d react-auth0
-```
-
-Starting Auth0 Blog with design proposal:
-
-```bash
-docker run --name blog-new-layout --network digituz -d brunokrebs/auth0-blog-design
-```
-
-Starting Digituz Docker (last command as it depends on everything else):
-
-```bash
 # build the nginx image
-docker build -t digituz-docker .
+docker build -t digituz-gateway .
 
 # run an instance based on this image
-docker run --network digituz --name digituz-docker -d -p 80:80 digituz-docker
+docker run --network digituz --name digituz-gateway -d -p 80:80 digituz-gateway
 ```
