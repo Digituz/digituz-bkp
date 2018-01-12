@@ -16,7 +16,8 @@ Then we have to bootstrap all Digituz microservices. To do so, we can follow ins
 
 - [Deploying React Client on Digituz](https://github.com/brunokrebs/react-auth0/blob/master/docs/deploy-digituz.md)
 - [Deploying RestFlex on Digituz](https://github.com/auth0-blog/auth0-rest-server/blob/master/docs/deploy-digituz.md)
-- [Deploying Auth0 Generic Client on Digituz](https://github.com/auth0-blog/brunokrebs/angular-auth0-generic-client/blob/master/docs/deploy-digituz.md)
+- [Deploying Auth0 Generic Client on Digituz](https://github.com/brunokrebs/angular-auth0-generic-client/blob/master/docs/deploy-digituz.md)
+- [Deploying Bang-Bang React Game](https://github.com/auth0-blog/bang-bang-react-game/blob/master/docs/deploy-digituz.md)
 
 ## Bootstrapping Digituz Gateway
 
