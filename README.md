@@ -11,7 +11,7 @@ ssh root@digituz.com.br
 # clone this repo
 mkdir git
 cd git
-git clone https://github.com/Digituz/digituz.git ./
+git clone https://github.com/Digituz/digituz.git ./digituz
 
 # move into it
 cd digituz
