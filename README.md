@@ -32,5 +32,5 @@ cd ~/git/digituz-gateway
 docker build -t digituz-gateway .
 
 # run an instance based on this image
-docker run --network digituz --name digituz-gateway -d -p 80:80 digituz-gateway
+docker run --network digituz_digituz --name digituz-gateway -d -p 80:80 digituz-gateway
 ```
