@@ -3,6 +3,9 @@
 # update local repo
 git pull
 
+# pull latests images
+docker-compose pull
+
 # build images
 docker-compose build
 
