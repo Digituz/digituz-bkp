@@ -1,36 +1,21 @@
-# Deploying Digituz Gateway
+## Instructions
 
-## Creating Digituz Network
+To configure a new [Droplet](https://www.digitalocean.com/products/droplets/), simply use the [Docker One-Click App](https://www.digitalocean.com/products/one-click-apps/docker/) to create a new server.
 
-First, we need to create a Docker network for Digituz microservices:
-
-```bash
-DIGITUZ_NETWORK=digituz
-
-docker network create $DIGITUZ_NETWORK
-```
-
-## Bootstrapping Microservices
-
-Then we have to bootstrap all Digituz microservices. To do so, we can follow instructions on their own repositories:
-
-- [Deploying React Client on Digituz](https://github.com/brunokrebs/react-auth0/blob/master/docs/deploy-digituz.md)
-- [Deploying RestFlex on Digituz](https://github.com/auth0-blog/auth0-rest-server/blob/master/docs/deploy-digituz.md)
-- [Deploying Auth0 Generic Client on Digituz](https://github.com/brunokrebs/angular-auth0-generic-client/blob/master/docs/deploy-digituz.md)
-- [Deploying Bang-Bang React Game](https://github.com/auth0-blog/bang-bang-react-game/blob/master/docs/deploy-digituz.md)
-
-## Bootstrapping Digituz Gateway
-
-We have to leave bootstrapping Digituz Gateway as the last thing because NGINX uses the other microservices as upstreams:
+Then, you will need to update the DNS to point `digituz.com.br` to the public IP address of this server. When finished, you can login into your droplet and clone this repo.
 
 ```bash
-# clone
-git clone https://github.com/Digituz/docker.git ~/git/digituz-gateway
-cd ~/git/digituz-gateway
+# log into your server
+ssh root@digituz.com.br
 
-# build the nginx image
-docker build -t digituz-gateway .
+# clone this repo
+mkdir git
+cd git
+git clone https://github.com/Digituz/digituz.git ./
 
-# run an instance based on this image
-docker run --network digituz_digituz --name digituz-gateway -d -p 80:80 digituz-gateway
+# move into it
+cd digituz
+
+# run it
+bin/run.sh &
 ```
