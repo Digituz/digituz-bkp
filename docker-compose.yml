@@ -3,13 +3,16 @@ services:
   mongo:
     image: "mongo"
   proxy:
+    container_name: proxy
     build: ./proxy/
   gateway:
+    container_name: gateway
     build: ./gateway/
     depends_on:
       - proxy
       - mongo
   auth0-angular-client:
+    container_name: auth0
     image: "digituz/auth0-angular-client"
     depends_on:
       - gateway
