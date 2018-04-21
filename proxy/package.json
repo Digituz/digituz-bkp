@@ -1,0 +1,15 @@
+{
+  "name": "digituz-proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src"
+  },
+  "keywords": [],
+  "author": "Bruno Krebs",
+  "license": "MIT",
+  "dependencies": {
+    "http-proxy": "^1.17.0"
+  }
+}
