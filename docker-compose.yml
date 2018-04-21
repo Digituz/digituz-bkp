@@ -30,5 +30,19 @@ services:
       - digituz
     depends_on:
       - gateway
+  brand-house-backend:
+    container_name: brand-house-backend
+    image: "digituz/brand-house-backend"
+    networks:
+      - digituz
+    depends_on:
+      - gateway
+  brand-house:
+    container_name: brand-house
+    image: "digituz/brand-house-frontend"
+    networks:
+      - digituz
+    depends_on:
+      - brand-house-backend
 networks:
   digituz:
