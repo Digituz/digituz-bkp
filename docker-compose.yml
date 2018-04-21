@@ -3,19 +3,29 @@ services:
   mongo:
     container_name: mongo
     image: "mongo"
+    networks:
+      - digituz
   proxy:
     container_name: digituz-proxy
     build: ./proxy/
+    networks:
+        - digituz
   gateway:
     container_name: digituz-gateway
     build: ./gateway/
     ports:
       - 80:80
+    networks:
+      - digituz
     depends_on:
       - proxy
       - mongo
   auth0-angular-client:
     container_name: auth0
     image: "digituz/auth0-angular-client"
+    networks:
+      - digituz
     depends_on:
       - gateway
+networks:
+  digituz:
