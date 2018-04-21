@@ -9,3 +9,7 @@ services:
     depends_on:
       - proxy
       - mongo
+  auth0-angular-client:
+    image: "digituz/auth0-angular-client"
+    depends_on:
+      - gateway
