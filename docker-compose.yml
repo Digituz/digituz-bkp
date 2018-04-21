@@ -9,6 +9,8 @@ services:
   gateway:
     container_name: digituz-gateway
     build: ./gateway/
+    ports:
+      - 80
     depends_on:
       - proxy
       - mongo
