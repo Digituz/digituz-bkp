@@ -22,8 +22,7 @@ services:
       - proxy
       - mongo
     volumes:
-      - "/docker/storage/digituz/letsencrypt/www:/var/www/letsencrypt"
-      - "/docker/storage/digituz/letsencrypt/etc:/etc/letsencrypt"
+      - "/etc/letsencrypt/:/etc/letsencrypt"
   auth0-angular-client:
     container_name: auth0
     image: "digituz/auth0-angular-client"
