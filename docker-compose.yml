@@ -30,19 +30,52 @@ services:
       - digituz
     depends_on:
       - gateway
-  brand-house-backend:
-    container_name: brand-house-backend
-    image: "digituz/brand-house-backend"
+
+  # brand house images
+  projects-api:
+    container_name: projects-api
+    image: "digituz/rest-flex"
     networks:
       - digituz
+    environment:
+      - DOMAIN=projects
+      - MONGODB_URL=brand-house-db:27017/projects
+      - AUTH0_DOMAIN=digituz-corp.auth0.com
+      - AUTH0_AUDIENCE=https://projects.digituz.com.br
+    depends_on:
+      - gateway
+  companies-api:
+    container_name: companies-api
+    image: "digituz/rest-flex"
+    networks:
+      - digituz
+    environment:
+      - DOMAIN=companies
+      - MONGODB_URL=brand-house-db:27017/companies
+      - AUTH0_DOMAIN=digituz-corp.auth0.com
+      - AUTH0_AUDIENCE=https://companies.digituz.com.br
+    depends_on:
+      - gateway
+  project-stages-api:
+    container_name: project-stages-api
+    image: "digituz/rest-flex"
+    networks:
+      - digituz
+    environment:
+      - DOMAIN=project-stages
+      - MONGODB_URL=brand-house-db:27017/project-stages
+      - AUTH0_DOMAIN=digituz-corp.auth0.com
+      - AUTH0_AUDIENCE=https://project-stages.digituz.com.br
     depends_on:
       - gateway
   brand-house:
     container_name: brand-house
-    image: "digituz/brand-house-frontend"
+    image: "digituz/brand-house"
     networks:
       - digituz
     depends_on:
-      - brand-house-backend
+      - projects-api
+      - companies-api
+      - project-stages-api
 networks:
   digituz:
